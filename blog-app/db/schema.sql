@@ -23,7 +23,7 @@ CREATE TABLE posts (
   title VARCHAR(250),
   content TEXT,
   category VARCHAR(250),
-  user_id INTEGER REFERENCES user (id),
+  user_id INTEGER REFERENCES users (id),
   created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
@@ -31,21 +31,21 @@ CREATE TABLE comments (
   id SERIAL PRIMARY KEY,
   content TEXT,
   created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-  post_id INTEGER REFERENCES post (id),
-  user_id INTEGER REFERENCES user (id)
+  post_id INTEGER REFERENCES posts (id),
+  user_id INTEGER REFERENCES users (id)
 );
 
 CREATE TABLE images (
   id SERIAL PRIMARY KEY,
   img_url TEXT,
-  post_id INTEGER REFERENCES post (id),
-  user_id INTEGER REFERENCES user (id)
+  post_id INTEGER REFERENCES posts (id),
+  user_id INTEGER REFERENCES users (id)
 );
 
 CREATE TABLE videos (
   id SERIAL PRIMARY KEY,
   video_url TEXT,
-  post_id INTEGER REFERENCES post (id),
-  user_id INTEGER REFERENCES user (id)
+  post_id INTEGER REFERENCES posts (id),
+  user_id INTEGER REFERENCES users (id)
 );
 
